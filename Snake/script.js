@@ -1,10 +1,18 @@
 //
-// Создание матрицы.
+// Vitaly Bibikov, Lesson 1,2
 //
 
-var TAKENCELL_CLASS_NAME = " greyout";
-var FOOD_CLASS_NAME = " food";
-var EMPTY_CLASS_NAME = "cell";
+var GAME_CLASSES = {
+    TAKENCELL: "greyout",
+    FOOD: "food",
+    EMPTY: "cell"
+}
+
+var GAME_MODE = {
+    BOUNDS: 0,
+    NO_BOUNDS: 1,
+    DEATH_BOUNDS: 2
+}
 
 function Matrix(matrixSize) {
     this.matrixSize = matrixSize;
@@ -17,7 +25,7 @@ function Matrix(matrixSize) {
         }
         var location = translateToMatrixCoordinates(row, col);
         var cell = getDomCellByLocation(location);
-        if (cell && cell.classList[1] && cell.classList[1] == TAKENCELL_CLASS_NAME) {
+        if (cell && cell.classList.contains(GAME_CLASSES.TAKENCELL)) {
             isTaken = true;
         }
         return isTaken;
@@ -26,12 +34,12 @@ function Matrix(matrixSize) {
     this.redraw = function redraw(positions) {
         for (var i = 1; i <= matrixSize * matrixSize; i++) {
             var cell = getDomCellByLocation(i);
-            cell.className = EMPTY_CLASS_NAME;
+            cell.className = GAME_CLASSES.EMPTY;
         }
         for (i = 0; i < positions.length; i++) {
             var location = this.translateToMatrixCoordinates(positions[i].x, positions[i].y);
             var cell = getDomCellByLocation(location);
-            cell.className += TAKENCELL_CLASS_NAME;
+            cell.classList.add(GAME_CLASSES.TAKENCELL);
         }
     }
 
@@ -51,21 +59,27 @@ function Matrix(matrixSize) {
     this.addCellToMatrix = function addCellToMatrix(position, className) {
         var location = this.translateToMatrixCoordinates(position.x, position.y);
         var cell = getDomCellByLocation(location);
-        cell.className += className;
+        cell.classList.add(className);
+        console.log("Just added cell classList: " + cell.classList);
         return location;
     }
 
     function createMatrix() {
         var matrix = document.getElementById('matrix');
+
         for (var i = 0; i < matrixSize * matrixSize; i++) {
             var cell = document.createElement('div');
             cell.className = 'cell';
             matrix.appendChild(cell);
         }
+        //matrix.style.width = matrix.style.height = matrixSize * matrixSize;
         return matrix;
     };
 
-    function getDomCellByLocation(location) {
+    var getDomCellByLocation = function getDomCellByLocation(location) {
+        var matrix = document.getElementById('matrix'); // без присваивания перестает работать
+        // зачем необходимо присваивать matrix переменной matrix? 
+        // на каком-то из этапов происходит сборка мусора, как этого избежать? или я не смог найти дефект.
         return matrix.childNodes[location - 1];
     }
 
@@ -76,108 +90,165 @@ function Matrix(matrixSize) {
             x: row,
             y: col
         };
+        console.log("translateFromCoordinates: X: " + raw + " Y: " + col + "position: " + position);
     };
 };
 
-function Snake(snakeSize, matrix) {
+function Snake(settings, matrix) {
     this.matrix = matrix;
-    this.snakeSize = snakeSize;
-    var foodPosition;
-    var positions = [];
+    this.snakeSize = settings.getSnakeSize();
+    this.gameMode = settings.getGameMode();
 
-    this.start = function start() {
-        var position = {
+    var foodPosition;
+    var snakePositions = [];
+
+    this.initialize = function initialize() {
+        var startPosition = {
             x: 0,
             y: 0
         };
-        this.addBlocktoSnake(position);
+        this.addBlocktoSnake(startPosition);
+
     };
 
     this.addBlocktoSnake = function addBlocktoSnake(block) {
         if (block) {
-            positions.push(block);
+            snakePositions.push(block);
+            matrix.redraw(snakePositions);
+            console.log("Block added to snake. X:" + block.x + " Y:" + block.y);
         }
-        matrix.redraw(positions);
     };
 
     this.updateCoordinates = function updateCoordinates(coordinates) {
-        if (coordinates) {
-            for (var i = 0; i < positions.length; i++) {
-                var x = positions[i].x + coordinates.x;
-                var y = positions[i].y + coordinates.y;
-                if (x >= 20 || y >= 20 || x < 0 || y < 0) {
-                    return;
-                }
-                positions[i].x = x;
-                positions[i].y = y;
-            }
-            matrix.redraw(positions);
-            checkFood(positions[0]);
+        if (coordinates && validateBounds(coordinates,this)) {
+            matrix.redraw(snakePositions);
+            checkFood(snakePositions[0]);
         }
     };
+
+    var validateBounds = function validateBounds(coordinates,obj) {
+        isValid = true;
+        var tempPositions = snakePositions;
+
+        for (var i = 0; i < snakePositions.length; i++) {
+            var x = snakePositions[i].x + coordinates.x;
+            var y = snakePositions[i].y + coordinates.y;
+            if (x >= matrix.matrixSize || y >= matrix.matrixSize || x < 0 || y < 0) {
+
+                if (obj.gameMode == GAME_MODE.NO_BOUNDS) {
+                    x < 0 ? x = matrix.matrixSize -1 : x;
+                    x == matrix.matrixSize ? x = 0 : x;
+                    y < 0 ? y = matrix.matrixSize -1 : y;
+                    y == matrix.matrixSize ? y = 0 : y;
+                } else if (gameMode == GAME_MODE.DEATH_BOUNDS) {
+                    positions = {};
+                    //matrix.gameEnd();
+                    break;
+                } else {
+                    isValid = false;
+                    snakePositions = tempPositions;
+                    break;
+                }
+            }
+
+            snakePositions[i].x = x;
+            snakePositions[i].y = y;
+            console.log("New coordinates: X: " + snakePositions[i].x + " Y: " + snakePositions[i].y);
+        }
+        return isValid;
+    }
+
 
     var checkFood = function checkFood(coordinates) {
-        var f = foodPosition
-        if (!f || (coordinates.x == foodPosition.x && coordinates.y == foodPosition.y)) {
-            foodPosition = locateFood();
+        var food = foodPosition; // вопрос! if не работает без присваивания значения локальной переменной. почему?
+        if (!food || compareObjectCoordinates(coordinates, foodPosition)) {
+            foodPosition = alocateFoodOnField();
+            console.log("New food location: X:" + foodPosition.x + " Y: " + foodPosition.y);
         } else {
-            matrix.addCellToMatrix(foodPosition, FOOD_CLASS_NAME);
+            matrix.addCellToMatrix(foodPosition, GAME_CLASSES.FOOD);
         }
     };
 
-    var locateFood = function locateFood() {
-        var snakePosition = getPosition();
+    var alocateFoodOnField = function alocateFoodOnField() {
         var cellPosition = matrix.getRandomCell();
 
-        for (var i = 0; i < snakePosition.length; i++) {
-            if (snakePosition[i].x == cellPosition.x && snakePosition[i].y == cellPosition.y) {
+        for (var i = 0; i < snakePositions.length; i++) {
+            if (compareObjectCoordinates(snakePositions[i], cellPosition)) {
                 cellPosition = matrix.getRandomCell();
                 i = 0;
                 continue;
             }
         }
-        matrix.addCellToMatrix(cellPosition, FOOD_CLASS_NAME);
+        matrix.addCellToMatrix(cellPosition, GAME_CLASSES.FOOD);
         return cellPosition;
     };
 
-    var getPosition = function getPosition() {
-        return positions;
-    };
+    var compareObjectCoordinates = function compareObjectCoordinates(objectA, objectB) {
+        return objectA.x == objectB.x && objectA.y == objectB.y;
+    }
 }
 
-function GameField(snake, matrix) {
-    this.snake = snake;
-    this.matrix = matrix;
+function Settings(gameMode, fieldSize, snakeSize) {
+    var mode = gameMode;
+    var fieldSize = fieldSize;
+    var snakeSize = snakeSize;
 
-    var ARROW_UP = 38;
-    var ARROW_DOWN = 40;
-    var ARROW_LEFT = 37;
-    var ARROW_RIGHT = 39;
+    this.getGameMode = function getGameMode() {
+        return mode;
+    }
+
+    this.getFieldSize = function getFieldSize() {
+        return fieldSize;
+    }
+
+    this.getSnakeSize = function getSnakeSize() {
+        return snakeSize;
+    }
+}
+
+function GameField(settings) {
+
+    this.settings = settings;
+    this.matrix = null;
+    this.snake = null;
+
+    var KEY_CODE = {
+        ARROW_UP: 38,
+        ARROW_DOWN: 40,
+        ARROW_LEFT: 37,
+        ARROW_RIGHT: 39
+    }
     var pressedKey;
+
+    this.initialize = function initialize() {
+        matrix = new Matrix(settings.getFieldSize());
+        snake = new Snake(settings, matrix);
+        snake.initialize();
+    }
 
     var onKeyPress = function onKeyPress(e) {
         e = e || window.event;
         pressedKey = e;
         switch (e.keyCode) {
-            case ARROW_UP:
+            case KEY_CODE.ARROW_UP:
                 snake.updateCoordinates({
                     x: 0,
                     y: -1
                 });
                 break
-            case ARROW_DOWN:
+            case KEY_CODE.ARROW_DOWN:
                 snake.updateCoordinates({
                     x: 0,
                     y: 1
                 });
                 break
-            case ARROW_RIGHT:
+            case KEY_CODE.ARROW_RIGHT:
                 snake.updateCoordinates({
                     x: 1,
                     y: 0
                 });
                 break
-            case ARROW_LEFT:
+            case KEY_CODE.ARROW_LEFT:
                 snake.updateCoordinates({
                     x: -1,
                     y: 0
@@ -195,18 +266,17 @@ function GameField(snake, matrix) {
 
 
 window.onload = function() {
-    var matrix = new Matrix(20);
-    var snake = new Snake(2, matrix);
-    var field = new GameField(snake, matrix);
-    snake.start();
+    var settings = new Settings(GAME_MODE.BOUNDS, 20, 1);
+    var game = new GameField(settings);
+    game.initialize();
 }
 
 // this.clearPosition = function clearPosition(deleteObj) {
 //     var i = 0;
 //     if (deleteObj) {
-//         for (i; i < positions.length; i++) {
-//             if (positions[i].x == deleteObj.x && positions[i].y == deleteObj.y) {
-//                 delete positions[i];
+//         for (i; i < snakePositions.length; i++) {
+//             if (snakePositions[i].x == deleteObj.x && snakePositions[i].y == deleteObj.y) {
+//                 delete snakePositions[i];
 //             }
 //         }
 //     }
