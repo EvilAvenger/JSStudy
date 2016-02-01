@@ -3,77 +3,111 @@ function Snake(settings, matrix) {
     this.snakeSize = settings.getSnakeSize();
     this.gameMode = settings.getGameMode();
     var self = this;
-    var foodPosition;
+
+    var foodPositions = [];
     var snakePositions = [];
 
-    this.initialize = function initialize() {
-        var startPosition = {
-            x: 0,
-            y: 0
-        };
-        this.addBlocktoSnake(startPosition);
-
+    this.initialize = function initialize(startPosition) {
+        this.updateCoordinates(settings.getStartPosition());
     };
 
-    this.addBlocktoSnake = function addBlocktoSnake(block) {
+    this.addBlocktoSnake = function addBlocktoSnake(block, isTail) {
         if (block) {
-            snakePositions.push(block);
-            matrix.redraw(snakePositions);
+            if (!isTail) {
+                snakePositions.unshift(block);
+            } else {
+                snakePositions.push(block);
+            }
             console.log("Block added to snake. X:" + block.x + " Y:" + block.y);
         }
+        return block;
     };
 
     this.updateCoordinates = function updateCoordinates(coordinates) {
-        if (coordinates && validateBounds(coordinates)) {
-            matrix.redraw(snakePositions);
-            checkFood(snakePositions[0]);
+        var newHead = null;
+        if (newHead = tryGetNewHeadPosition(coordinates)) {
+            checkFoodWasEaten(newHead);
+            updateSnake();
+            matrix.redrawFood(foodPositions);
+            var newTail = tryAddEatenFoodAsTail(getSnakesTailBlock())
         }
     };
 
-    var validateBounds = function validateBounds(coordinates) {
-        isValid = true;
-        var tempPositions = snakePositions;
-
-        for (var i = 0; i < snakePositions.length; i++) {
-            var x = snakePositions[i].x + coordinates.x;
-            var y = snakePositions[i].y + coordinates.y;
-            if (x >= matrix.matrixSize || y >= matrix.matrixSize || x < 0 || y < 0) {
-
-                if (self.gameMode == GAME_MODE.NO_BOUNDS) {
-                    x < 0 ? x = matrix.matrixSize -1 : x;
-                    x == matrix.matrixSize ? x = 0 : x;
-                    y < 0 ? y = matrix.matrixSize -1 : y;
-                    y == matrix.matrixSize ? y = 0 : y;
-                } else if (gameMode == GAME_MODE.DEATH_BOUNDS) {
-                    positions = {};
-                    //matrix.gameEnd();
-                    break;
-                } else {
-                    isValid = false;
-                    snakePositions = tempPositions;
-                    break;
-                }
-            }
-
-            snakePositions[i].x = x;
-            snakePositions[i].y = y;
-            console.log("New coordinates: X: " + snakePositions[i].x + " Y: " + snakePositions[i].y);
+    var tryGetNewHeadPosition = function tryGetNewHeadPosition(coordinates) {
+        var position = null;
+        if (coordinates) {
+            var snakesHead = getSnakesHeadBlock() || coordinates;
+            coordinates.x += snakesHead.x;
+            coordinates.y += snakesHead.y;
+            position = self.addBlocktoSnake(validateBounds(coordinates), false);
         }
-        return isValid;
+        return position;
     }
 
+    var validateBounds = function validateBounds(head) {
+        if (head.x >= matrix.matrixSize || head.y >= matrix.matrixSize || head.x < 0 || head.y < 0) {
+            if (self.gameMode == GAME_MODE.NO_BOUNDS) {
 
-    var checkFood = function checkFood(coordinates) {
-        var food = foodPosition; // вопрос! if не работает без присваивания значения локальной переменной. почему?
-        if (!food || compareObjectCoordinates(coordinates, foodPosition)) {
-            foodPosition = alocateFoodOnField();
-            console.log("New food location: X:" + foodPosition.x + " Y: " + foodPosition.y);
-        } else {
-            matrix.addCellToMatrix(foodPosition, GAME_CLASSES.FOOD);
+                head.x < 0 ? head.x = matrix.matrixSize - 1 : head.x;
+                head.x == matrix.matrixSize ? head.x = 0 : head.x;
+                head.y < 0 ? y = matrix.matrixSize - 1 : head.y;
+                head.y == matrix.matrixSize ? head.y = 0 : head.y;
+
+            } else if (gameMode == GAME_MODE.DEATH_BOUNDS) {
+                head = null;
+                //matrix.gameEnd();
+            } else {
+                head = false;
+            }
         }
+        return head;
+    }
+    var updateSnake = function updateSnake() {
+        matrix.redrawSnake(snakePositions);
+        if (snakePositions.length > 1) {
+            snakePositions.pop();
+        }
+    }
+    var checkFoodWasEaten = function checkFoodWasEaten(snakesHead) {
+        var food = foodPositions && foodPositions[0];
+        var foodEaten = false;
+
+        if (!food) {
+            createNewFoodRandomly();
+        }
+        if (food && (foodEaten = compareObjectCoordinates(snakesHead, food))) {
+            markAsEatenFood(foodPositions);
+            createNewFoodRandomly();
+        }
+        return foodEaten;
     };
 
-    var alocateFoodOnField = function alocateFoodOnField() {
+    var tryAddEatenFoodAsTail = function tryAddEatenFoodAsTail(snakesTail) {
+        var newTail = null;
+        var last = foodPositions[foodPositions.length - 1];
+        if (compareObjectCoordinates(snakesTail, last)) {
+            newTail = foodPositions.pop();
+            delete newTail.isEaten;
+            self.addBlocktoSnake(newTail, true);
+            //matrix.addTail(newTail);
+        }
+        return newTail;
+    };
+
+    var markAsEatenFood = function markAsEatenFood(foodPositions) {
+        foodPositions[0].isEaten = true;
+        return foodPositions[0];
+    }
+
+    var getSnakesHeadBlock = function getSnakesHeadBlock() {
+        return snakePositions[0];
+    }
+
+    var getSnakesTailBlock = function getSnakesTailBlock() {
+        return snakePositions[snakePositions.length - 1];
+    }
+
+    var createNewFoodRandomly = function createNewFoodRandomly() {
         var cellPosition = matrix.getRandomCell();
 
         for (var i = 0; i < snakePositions.length; i++) {
@@ -83,7 +117,9 @@ function Snake(settings, matrix) {
                 continue;
             }
         }
-        matrix.addCellToMatrix(cellPosition, GAME_CLASSES.FOOD);
+        cellPosition.isEaten = false;
+        foodPositions.unshift(cellPosition);
+        console.log("New food location: X:" + cellPosition.x + " Y: " + cellPosition.y);
         return cellPosition;
     };
 

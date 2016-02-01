@@ -22,3 +22,7 @@
 .food{
 	background-color: grey;
 }
+
+.foodtaken{
+	background-color: red;
+}

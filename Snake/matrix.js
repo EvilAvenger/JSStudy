@@ -15,15 +15,53 @@ function Matrix(matrixSize) {
         return isTaken;
     };
 
-    this.redraw = function redraw(positions) {
-        for (var i = 1; i <= matrixSize * matrixSize; i++) {
-            var cell = getDomCellByLocation(i);
-            cell.className = GAME_CLASSES.EMPTY;
+    var toggleClass = function togleClass(location, className) {
+        var cell = getDomCellByLocation(location);
+        cell.classList.toggle(className);
+    }
+
+    var addClass = function togleClass(location, className) {
+        var cell = getDomCellByLocation(location);
+        if (!cell.classList.contains(className)) {
+            cell.classList.add(className);
         }
-        for (i = 0; i < positions.length; i++) {
-            var location = this.translateToMatrixCoordinates(positions[i].x, positions[i].y);
-            var cell = getDomCellByLocation(location);
-            cell.classList.add(GAME_CLASSES.TAKENCELL);
+    }
+
+    var removeClass = function togleClass(location, className) {
+        var cell = getDomCellByLocation(location);
+        if (cell.classList.contains(className)) {
+            cell.classList.remove(className);
+        }
+    }
+
+    this.addTail = function addTail(positions) {
+        if (positions) {
+            addClass(this.translateToMatrixCoordinates(positions.x, positions.y), GAME_CLASSES.TAKENCELL);
+            removeClass(this.translateToMatrixCoordinates(positions.x, positions.y), GAME_CLASSES.TAKENFOOD);
+        }
+    }
+
+    this.redrawSnake = function redrawSnake(positions) {
+        if (positions) {
+            var first = positions[0];
+            toggleClass(this.translateToMatrixCoordinates(first.x, first.y), GAME_CLASSES.TAKENCELL);
+            if (positions.length > 1) {
+                var last = positions[positions.length - 1];
+                toggleClass(this.translateToMatrixCoordinates(last.x, last.y), GAME_CLASSES.TAKENCELL);
+                removeClass(this.translateToMatrixCoordinates(last.x, last.y), GAME_CLASSES.TAKENFOOD);
+            }
+        }
+    }
+
+    this.redrawFood = function redrawFood(positions) {
+        for (var i = 0; i < positions.length; i++) {
+            if (positions[i] && positions[i].isEaten) {
+                removeClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.TAKENCELL);
+                removeClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.FOOD);
+                addClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.TAKENFOOD);
+            } else {
+                addClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.FOOD);
+            }
         }
     }
 

@@ -1,7 +1,9 @@
-function Settings(gameMode, fieldSize, snakeSize) {
+function Settings(gameMode, fieldSize, snakeSize,startPosition) {
+    
     var mode = gameMode;
     var fieldSize = fieldSize;
     var snakeSize = snakeSize;
+    var startPosition = startPosition;
 
     this.getGameMode = function getGameMode() {
         return mode;
@@ -13,5 +15,9 @@ function Settings(gameMode, fieldSize, snakeSize) {
 
     this.getSnakeSize = function getSnakeSize() {
         return snakeSize;
+    }
+
+    this.getStartPosition = function getStartPosition(){
+        return startPosition;
     }
 }

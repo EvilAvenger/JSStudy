@@ -50,8 +50,8 @@ function GameField(settings) {
                 break
         }
     };
-    document.onkeypress = onKeyPress;
-    setInterval(function() {
-        onKeyPress(pressedKey)
-    }, 1000);
+     document.onkeypress = onKeyPress;
+    // setInterval(function() {
+    //     onKeyPress(pressedKey)
+    // }, 1000);
 }

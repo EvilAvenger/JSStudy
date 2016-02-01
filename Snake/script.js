@@ -1,9 +1,10 @@
 //
-// Vitaly Bibikov, Lesson 1,2
+// Vitaly Bibikov, Lesson 1,2,3
 //
 var GAME_CLASSES = {
     TAKENCELL: "greyout",
     FOOD: "food",
+    TAKENFOOD: "foodtaken",
     EMPTY: "cell"
 }
 
@@ -14,7 +15,11 @@ var GAME_MODE = {
 }
 
 window.onload = function() {
-    var settings = new Settings(GAME_MODE.NO_BOUNDS, 20, 1);
+    var startPosition = {
+        x: 0,
+        y: 0
+    };
+    var settings = new Settings(GAME_MODE.NO_BOUNDS, 20, 1, startPosition);
     var game = new GameField(settings);
     game.initialize();
 }
