@@ -23,14 +23,3 @@ window.onload = function() {
     var game = new GameField(settings);
     game.initialize();
 }
-
-// this.clearPosition = function clearPosition(deleteObj) {
-//     var i = 0;
-//     if (deleteObj) {
-//         for (i; i < snakePositions.length; i++) {
-//             if (snakePositions[i].x == deleteObj.x && snakePositions[i].y == deleteObj.y) {
-//                 delete snakePositions[i];
-//             }
-//         }
-//     }
-// }

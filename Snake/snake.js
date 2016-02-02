@@ -29,7 +29,7 @@ function Snake(settings, matrix) {
             checkFoodWasEaten(newHead);
             updateSnake();
             matrix.redrawFood(foodPositions);
-            var newTail = tryAddEatenFoodAsTail(getSnakesTailBlock())
+            var newTail = tryAddEatenFoodAsTail(getSnakesTailBlock());
         }
     };
 
@@ -50,10 +50,10 @@ function Snake(settings, matrix) {
 
                 head.x < 0 ? head.x = matrix.matrixSize - 1 : head.x;
                 head.x == matrix.matrixSize ? head.x = 0 : head.x;
-                head.y < 0 ? y = matrix.matrixSize - 1 : head.y;
+                head.y < 0 ? head.y = matrix.matrixSize - 1 : head.y;
                 head.y == matrix.matrixSize ? head.y = 0 : head.y;
 
-            } else if (gameMode == GAME_MODE.DEATH_BOUNDS) {
+            } else if (self.gameMode == GAME_MODE.DEATH_BOUNDS) {
                 head = null;
                 //matrix.gameEnd();
             } else {
@@ -89,7 +89,6 @@ function Snake(settings, matrix) {
             newTail = foodPositions.pop();
             delete newTail.isEaten;
             self.addBlocktoSnake(newTail, true);
-            //matrix.addTail(newTail);
         }
         return newTail;
     };
