@@ -1,5 +1,5 @@
-function Settings(gameMode, fieldSize, snakeSize,startPosition) {
-    
+function Settings(gameMode, fieldSize, snakeSize, startPosition) {
+
     var mode = gameMode;
     var fieldSize = fieldSize;
     var snakeSize = snakeSize;
@@ -17,7 +17,26 @@ function Settings(gameMode, fieldSize, snakeSize,startPosition) {
         return snakeSize;
     }
 
-    this.getStartPosition = function getStartPosition(){
+    this.getStartPosition = function getStartPosition() {
         return startPosition;
+    }
+
+    this.MOVE = {
+        UP: {
+            x: 0,
+            y: -1
+        },
+        DOWN: {
+            x: 0,
+            y: 1
+        },
+        LEFT: {
+            x: -1,
+            y: 0
+        },
+        RIGHT: {
+            x: 1,
+            y: 0
+        }
     }
 }

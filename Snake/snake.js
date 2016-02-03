@@ -1,9 +1,11 @@
 function Snake(settings, matrix) {
+
     this.matrix = matrix;
     this.snakeSize = settings.getSnakeSize();
     this.gameMode = settings.getGameMode();
-    var self = this;
 
+    var self = this;
+    var prevMove = {};
     var foodPositions = [];
     var snakePositions = [];
 
@@ -25,21 +27,42 @@ function Snake(settings, matrix) {
 
     this.updateCoordinates = function updateCoordinates(coordinates) {
         var newHead = null;
-        if (newHead = tryGetNewHeadPosition(coordinates)) {
+        if (!checkReverseMove(prevMove, coordinates) && (newHead = tryGetNewHeadPosition(coordinates))) {
+            hasSnakeAteItself(newHead);
             checkFoodWasEaten(newHead);
             updateSnake();
             matrix.redrawFood(foodPositions);
             var newTail = tryAddEatenFoodAsTail(getSnakesTailBlock());
+            prevMove = coordinates;
         }
     };
 
+    var hasSnakeAteItself = function hasSnakeAteItself(newHead) {
+        var isAte = false;
+        for(var i = 1; i < snakePositions.length; i++) {
+            if (compareObjectCoordinates(newHead, snakePositions[i])) {
+                isAte = true;
+                break;
+            }
+        }
+        return isAte;
+    }
+
+    var checkReverseMove = function checkReverseMove(prevMove, coordinates) {
+        isReverse = false;
+        if (prevMove && coordinates) {
+            isReverse = !compareObjectCoordinates(prevMove, coordinates) && compareObjectAbsCoordinates(prevMove, coordinates);
+        }
+        return isReverse;
+    }
+
     var tryGetNewHeadPosition = function tryGetNewHeadPosition(coordinates) {
-        var position = null;
+        var position = {};
         if (coordinates) {
             var snakesHead = getSnakesHeadBlock() || coordinates;
-            coordinates.x += snakesHead.x;
-            coordinates.y += snakesHead.y;
-            position = self.addBlocktoSnake(validateBounds(coordinates), false);
+            position.x = coordinates.x + snakesHead.x;
+            position.y = coordinates.y + snakesHead.y;
+            position = self.addBlocktoSnake(validateBounds(position), false);
         }
         return position;
     }
@@ -55,7 +78,6 @@ function Snake(settings, matrix) {
 
             } else if (self.gameMode == GAME_MODE.DEATH_BOUNDS) {
                 head = null;
-                //matrix.gameEnd();
             } else {
                 head = false;
             }
@@ -124,5 +146,9 @@ function Snake(settings, matrix) {
 
     var compareObjectCoordinates = function compareObjectCoordinates(objectA, objectB) {
         return objectA.x == objectB.x && objectA.y == objectB.y;
+    }
+
+    var compareObjectAbsCoordinates = function compareObjectCoordinates(objectA, objectB) {
+        return Math.abs(objectA.x) == Math.abs(objectB.x) && Math.abs(objectA.y) == Math.abs(objectB.y);
     }
 }

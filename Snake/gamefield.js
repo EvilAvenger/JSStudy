@@ -10,6 +10,7 @@ function GameField(settings) {
         ARROW_LEFT: 37,
         ARROW_RIGHT: 39
     }
+
     var pressedKey;
 
     this.initialize = function initialize() {
@@ -18,40 +19,28 @@ function GameField(settings) {
         snake.initialize();
     }
 
-    var onKeyPress = function onKeyPress(e) {
+    var onKeyDown = function onKeyDown(e) {
         e = e || window.event;
         pressedKey = e;
         switch (e.keyCode) {
             case KEY_CODE.ARROW_UP:
-                snake.updateCoordinates({
-                    x: 0,
-                    y: -1
-                });
+                snake.updateCoordinates(settings.MOVE.UP);
                 break
             case KEY_CODE.ARROW_DOWN:
-                snake.updateCoordinates({
-                    x: 0,
-                    y: 1
-                });
+                snake.updateCoordinates(settings.MOVE.DOWN);
                 break
             case KEY_CODE.ARROW_RIGHT:
-                snake.updateCoordinates({
-                    x: 1,
-                    y: 0
-                });
+                snake.updateCoordinates(settings.MOVE.RIGHT);
                 break
             case KEY_CODE.ARROW_LEFT:
-                snake.updateCoordinates({
-                    x: -1,
-                    y: 0
-                });
+                snake.updateCoordinates(settings.MOVE.LEFT);
                 break
             default:
                 break
         }
     };
-     document.onkeypress = onKeyPress;
-    setInterval(function() {
-        onKeyPress(pressedKey)
-    }, 1000);
+     document.onkeydown = onKeyDown;
+    // setInterval(function() {
+    //     onKeyPress(pressedKey)
+    // }, 3000);
 }
