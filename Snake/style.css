@@ -1,28 +1,56 @@
-#matrix
-{
-	width: 400px;
-	height: 400px;
-	border-top: 1px solid #999;
-	border-left: 1px solid #999;	
+#matrix {
+    width: 400px;
+    height: 400px;
+    border-top: 1px solid #999;
+    border-left: 1px solid #999;
+    background-color: #EEEEFF;
 }
 
-#matrix .cell
-{
-	float: left;
-	width: 19px;
-	height: 19px;	
-	border-bottom: 1px solid #999;
-	border-right: 1px solid #999;	
+#matrix .cell {
+    float: left;
+    width: 19px;
+    height: 19px;
+    border-bottom: 1px solid #999;
+    border-right: 1px solid #999;
 }
 
-.greyout{
-	background-color: black;
+.greyout {
+    background-color: black;
 }
 
-.food{
-	background-color: grey;
+.food {
+    background-color: #FF5500;
 }
 
-.foodtaken{
-	background-color: red;
+.foodtaken {
+    background-color: #00FF00;
+}
+
+h3,
+.field,
+#length {
+    display: inline-block;
+    color: purple;
+}
+
+.clear {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.panel {
+    border: 1px solid #010000;
+}
+
+.settings {
+    padding: 20px;
+    margin: 2px auto;
+    width: 200px;
 }

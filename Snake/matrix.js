@@ -1,33 +1,21 @@
 function Matrix(matrixSize) {
+
     this.matrixSize = matrixSize;
     this.matrix = createMatrix();
 
-    this.getCell = function getCell(row, col) {
-        var isTaken = false;
-        if (row > matrixSize || col > matrixSize) {
-            throw new Error("Wrong address of a cell: row: " + row + "column: " + col);
-        }
-        var location = translateToMatrixCoordinates(row, col);
-        var cell = getDomCellByLocation(location);
-        if (cell && cell.classList.contains(GAME_CLASSES.TAKENCELL)) {
-            isTaken = true;
-        }
-        return isTaken;
-    };
-
-    var toggleClass = function togleClass(location, className) {
+    var toggleClass = function toggleClass(location, className) {
         var cell = getDomCellByLocation(location);
         cell.classList.toggle(className);
     }
 
-    var addClass = function togleClass(location, className) {
+    var addClass = function addClass(location, className) {
         var cell = getDomCellByLocation(location);
         if (!cell.classList.contains(className)) {
             cell.classList.add(className);
         }
     }
 
-    var removeClass = function togleClass(location, className) {
+    var removeClass = function removeClass(location, className) {
         var cell = getDomCellByLocation(location);
         if (cell.classList.contains(className)) {
             cell.classList.remove(className);
@@ -86,6 +74,10 @@ function Matrix(matrixSize) {
         return location;
     }
 
+    this.clearBody = function clearBody(){
+        document.body.matrix.innerHTML = "";
+    }
+
     function createMatrix() {
         var matrix = document.getElementById('matrix');
 
@@ -94,14 +86,11 @@ function Matrix(matrixSize) {
             cell.className = 'cell';
             matrix.appendChild(cell);
         }
-        //matrix.style.width = matrix.style.height = matrixSize * matrixSize;
         return matrix;
     };
 
     var getDomCellByLocation = function getDomCellByLocation(location) {
-        var matrix = document.getElementById('matrix'); // без присваивания перестает работать
-        // зачем необходимо присваивать matrix переменной matrix? 
-        // на каком-то из этапов происходит сборка мусора, как этого избежать? или я не смог найти дефект.
+        var matrix = document.getElementById('matrix'); 
         return matrix.childNodes[location - 1];
     }
 

@@ -10,8 +10,8 @@ var GAME_CLASSES = {
 
 var GAME_MODE = {
     BOUNDS: 0,
-    NO_BOUNDS: 1,
-    DEATH_BOUNDS: 2
+    NOBOUNDS: 1,
+    DEATHBOUNDS: 2
 }
 
 window.onload = function() {
@@ -20,7 +20,8 @@ window.onload = function() {
         x: 0,
         y: 0
     };
-    var settings = new Settings(GAME_MODE.NO_BOUNDS, 20, 1, startPosition);
+    var settings = new Settings(GAME_MODE.NOBOUNDS, 20, 1, startPosition);
+    settings.initialize();
     var game = new GameField(settings);
     game.initialize();
 }

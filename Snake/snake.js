@@ -2,7 +2,6 @@ function Snake(settings, matrix) {
 
     this.matrix = matrix;
     this.snakeSize = settings.getSnakeSize();
-    this.gameMode = settings.getGameMode();
 
     var self = this;
     var snakePositions = [];
@@ -80,41 +79,42 @@ function Snake(settings, matrix) {
         return newTail;
     };
 
-    var validateBounds = function validateBounds(head) {
+    function validateBounds(head) {
         if (head.x >= matrix.matrixSize || head.y >= matrix.matrixSize || head.x < 0 || head.y < 0) {
-            if (self.gameMode == GAME_MODE.NO_BOUNDS) {
+            if (settings.getGameMode() == GAME_MODE.NOBOUNDS) {
 
                 head.x < 0 ? head.x = matrix.matrixSize - 1 : head.x;
                 head.x == matrix.matrixSize ? head.x = 0 : head.x;
                 head.y < 0 ? head.y = matrix.matrixSize - 1 : head.y;
                 head.y == matrix.matrixSize ? head.y = 0 : head.y;
 
-            } else if (self.gameMode == GAME_MODE.DEATH_BOUNDS) {
+            } else if (settings.getGameMode() == GAME_MODE.DEATHBOUNDS) {
+                //available only in DLC. $9.99
                 head = null;
             } else {
-                head = false;
+                head = null;
             }
         }
         return head;
     }
 
-    var updateSnake = function updateSnake() {
+    function updateSnake() {
         matrix.redrawSnake(snakePositions);
         if (snakePositions.length > 1) {
             snakePositions.pop();
         }
     }
 
-    var markAsEatenFood = function markAsEatenFood(foodPositions) {
+    function markAsEatenFood(foodPositions) {
         foodPositions[0].isEaten = true;
         return foodPositions[0];
     }
 
-    var getSnakesHeadBlock = function getSnakesHeadBlock() {
+    function getSnakesHeadBlock() {
         return snakePositions[0];
     }
 
-    var getSnakesTailBlock = function getSnakesTailBlock() {
+    function getSnakesTailBlock() {
         return snakePositions[snakePositions.length - 1];
     }
 }

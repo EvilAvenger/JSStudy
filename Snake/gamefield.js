@@ -4,8 +4,12 @@ function GameField(settings) {
     this.matrix = null;
     this.snake = null;
 
+    var self = this;
+    var pressedKey;
+    var interval;
     var foodPositions = [];
     var prevMove = {};
+    var started = false;
     var KEY_CODE = {
         ARROW_UP: 38,
         ARROW_DOWN: 40,
@@ -13,21 +17,27 @@ function GameField(settings) {
         ARROW_RIGHT: 39
     }
 
-    var pressedKey;
-
     this.initialize = function initialize() {
+        stats = new GameStatistics();
         matrix = new Matrix(settings.getFieldSize());
         snake = new Snake(settings, matrix);
         updateCoordinates(settings.getStartPosition());
+        document.onkeydown = onKeyDown;
+        interval = setInterval(function() {
+            onKeyDown(pressedKey)
+        }, 1500);
     }
 
-    var updateCoordinates = function updateCoordinates(coordinates) {
+    function updateCoordinates(coordinates) {
         var newHead = null;
         if (!snake.checkReverseMove(prevMove, coordinates) && (newHead = snake.tryGetNewHeadPosition(coordinates))) {
             if (snake.hasSnakeAteItself(newHead)) {
                 gameEnd();
+                return;
             }
             if (snake.checkFoodWasEaten(newHead, foodPositions)) {
+                stats.scoreUp();
+                stats.lengthUp();
                 createNewFoodRandomly();
             }
             matrix.redrawFood(foodPositions);
@@ -36,7 +46,7 @@ function GameField(settings) {
         }
     };
 
-    var createNewFoodRandomly = function createNewFoodRandomly() {
+    function createNewFoodRandomly() {
         var cellPosition = matrix.getRandomCell();
         var snakePositions = snake.getSnakePositions();
         for (var i = 0; i < snakePositions.length; i++) {
@@ -52,12 +62,38 @@ function GameField(settings) {
         return cellPosition;
     };
 
-    var gameEnd = function gameEng() {
+    function gameEnd() {
+        dispose();
         alert("End");
+        setTimeout(self.initialize, 2000);
+    }
+
+    function dispose() {
+        document.onkeydown = null;
+        clearInterval(interval);
+        pressedKey = null;
+        interval = 0;
+        foodPositions = [];
+        prevMove = {};
+        started = false;
+        settings.toggleSettings(false);
+        self.stats = null;
+        self.snake = null;
+        self.matrix = null;
+        $("#matrix").html("");
     }
 
     var onKeyDown = function onKeyDown(e) {
         e = e || window.event;
+
+        if (!e)
+            return
+
+        if (!started) {
+            settings.toggleSettings(true);
+            started = true;
+        }
+
         pressedKey = e;
         switch (e.keyCode) {
             case KEY_CODE.ARROW_UP:
@@ -76,8 +112,4 @@ function GameField(settings) {
                 break
         }
     };
-    document.onkeydown = onKeyDown;
-    // setInterval(function() {
-    //     onKeyPress(pressedKey)
-    // }, 3000);
 }
