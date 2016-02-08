@@ -31,15 +31,17 @@ function Snake(settings, matrix) {
             }
         }
         return isAte;
-    }
+    };
 
     this.checkReverseMove = function checkReverseMove(prevMove, coordinates) {
         isReverse = false;
         if (prevMove && coordinates) {
-            isReverse = !prevMove.compareObjectCoordinates(coordinates) && prevMove.compareObjectAbsCoordinates(coordinates);
+            isReverse = 
+            !prevMove.compareObjectCoordinates(coordinates) 
+            && prevMove.compareObjectAbsCoordinates(coordinates);
         }
         return isReverse;
-    }
+    };
 
     this.tryGetNewHeadPosition = function tryGetNewHeadPosition(coordinates) {
         var position = {};
@@ -50,7 +52,7 @@ function Snake(settings, matrix) {
             position = self.addBlocktoSnake(validateBounds(position), false);
         }
         return position;
-    }
+    };
 
     this.checkFoodWasEaten = function checkFoodWasEaten(snakesHead, foodPositions) {
         var food = foodPositions && foodPositions[0];
@@ -96,25 +98,25 @@ function Snake(settings, matrix) {
             }
         }
         return head;
-    }
+    };
 
     function updateSnake() {
         matrix.redrawSnake(snakePositions);
         if (snakePositions.length > 1) {
             snakePositions.pop();
         }
-    }
+    };
 
     function markAsEatenFood(foodPositions) {
         foodPositions[0].isEaten = true;
         return foodPositions[0];
-    }
+    };
 
     function getSnakesHeadBlock() {
         return snakePositions[0];
-    }
+    };
 
     function getSnakesTailBlock() {
         return snakePositions[snakePositions.length - 1];
-    }
+    };
 }

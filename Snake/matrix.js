@@ -44,7 +44,10 @@ function Matrix(matrixSize) {
     this.redrawFood = function redrawFood(positions) {
         for (var i = 0; i < positions.length; i++) {
             var elements = this.getElementIndex(positions[i].x, positions[i].y);
-            if (positions[i].isEaten) {
+            if(positions[i].isExpired){
+               removeClass(elements, GAME_CLASSES.FOOD); 
+            }
+            else if (positions[i].isEaten) {
                 removeClass(elements, GAME_CLASSES.TAKENCELL);
                 removeClass(elements, GAME_CLASSES.FOOD);
                 addClass(elements, GAME_CLASSES.TAKENFOOD);
@@ -71,13 +74,6 @@ function Matrix(matrixSize) {
         coordinate = matrixSize * (row + 1) - matrixSize + col;
         return $("#matrix").children().eq(coordinate).first();
     };
-
-    this.addCellToMatrix = function addCellToMatrix(position, className) {
-        var cell = this.getElementIndex(position.x, position.y);
-        cell.classList.add(className);
-        console.log("Just added cell classList: " + cell.classList);
-        return location;
-    }
 
     this.clearBody = function clearBody() {
         document.body.matrix.innerHTML = "";

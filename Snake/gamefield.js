@@ -3,39 +3,42 @@ function GameField(settings) {
     this.settings = settings;
     this.matrix = null;
     this.snake = null;
+
     var MIN_POINTS_FOR_FOOD = 1;
+    var TIMER_INITIAL_VAL = 1500;
     var self = this;
     var pressedKey;
-    var interval;
+    var moveInterval;
+    var foodExpireTimeOut;
     var foodPositions = [];
     var prevMove = {};
     var started = false;
-    
+
     var foodCoordinates = [{
         x: "0",
         y: "-60",
         points: 1,
-        timer: 10
+        timer: -1
     }, {
         x: "-19",
         y: "-19",
         points: 2,
-        timer: 7
+        timer: 10000
     }, {
         x: "-19",
         y: "-60",
         points: 3,
-        timer: 5
+        timer: 8000
     }, {
         x: "-38",
         y: "-59",
         points: 5,
-        timer: 4
+        timer: 7000
     }, {
         x: "-112",
         y: "0",
         points: 7,
-        timer: 3
+        timer: 5000
     }];
 
     var KEY_CODE = {
@@ -51,10 +54,8 @@ function GameField(settings) {
         snake = new Snake(settings, matrix);
         updateCoordinates(settings.getStartPosition());
         document.onkeydown = onKeyDown;
-        interval = setInterval(function() {
-            onKeyDown(pressedKey)
-        }, 1500);
-    }
+        moveInterval = setInterval(reassignTimer, TIMER_INITIAL_VAL);
+    };
 
     function updateCoordinates(coordinates) {
         var newHead = null;
@@ -71,8 +72,8 @@ function GameField(settings) {
     };
 
     function validateFood(newHead) {
-
         if (snake.checkFoodWasEaten(newHead, foodPositions)) {
+            clearInterval(foodExpireTimeOut);
             var points = MIN_POINTS_FOR_FOOD;
             if (foodPositions[0] && foodPositions[0].foodType) {
                 points = foodPositions[0].foodType.points;
@@ -81,7 +82,7 @@ function GameField(settings) {
             stats.lengthUp();
             createNewFoodRandomly();
         }
-    }
+    };
 
     function createNewFoodRandomly() {
         var cellPosition = matrix.getRandomCell();
@@ -93,28 +94,46 @@ function GameField(settings) {
                 continue;
             }
         }
-        cellPosition.isEaten = false;
-        cellPosition.foodType = chooseFoodFromArray();
-        foodPositions.unshift(cellPosition);
-        console.log("New food location: X:" + cellPosition.x + " Y: " + cellPosition.y);
-        return cellPosition;
+        return createFoodObject(cellPosition);
+    };
+
+    function createFoodObject(cell) {
+        stats.setFoodCount();
+        cell.isEaten = false;
+        cell.foodType = chooseFoodFromArray();
+        foodPositions.unshift(cell);
+        deleteExpiredFood(cell);
+        console.log("New food location: X:" + cell.x + " Y: " + cell.y);
+        return cell;
+    };
+
+    function deleteExpiredFood(cell) {
+        if (cell.foodType && cell.foodType.timer && cell.foodType.timer > 0) {
+            foodExpireTimeOut = setTimeout(function() {
+                stats.scoreDown();
+                foodPositions[0].isExpired = true;
+                matrix.redrawFood(foodPositions);
+                foodPositions.pop();
+                createNewFoodRandomly();
+            }, cell.foodType.timer);
+        }
     };
 
     function chooseFoodFromArray() {
         return foodCoordinates[Math.floor(Math.random() * foodCoordinates.length)];
-    }
+    };
 
     function gameEnd() {
         dispose();
         alert("End");
         setTimeout(self.initialize, 2000);
-    }
+    };
 
     function dispose() {
         document.onkeydown = null;
-        clearInterval(interval);
+        clearInterval(moveInterval);
+        clearInterval(foodExpireTimeOut);
         pressedKey = null;
-        interval = 0;
         foodPositions = [];
         prevMove = {};
         started = false;
@@ -123,7 +142,15 @@ function GameField(settings) {
         self.snake = null;
         self.matrix = null;
         $("#matrix").html("");
-    }
+    };
+
+    var reassignTimer = function() {
+        clearInterval(moveInterval);
+        onKeyDown(pressedKey);
+        moveInterval = setInterval(reassignTimer, 
+            TIMER_INITIAL_VAL * (100 - (Math.round(stats.getLength() / 10) * 10)) / 100);
+        stats.setSpeed();
+    };
 
     var onKeyDown = function onKeyDown(e) {
         e = e || window.event;
