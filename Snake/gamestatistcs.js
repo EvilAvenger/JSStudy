@@ -3,8 +3,12 @@ function GameStatistics() {
     var points = -1;
     var length = 0;
 
-    this.scoreUp = function scoreUp() {
-        points++;
+    this.scoreUp = function scoreUp(amount) {
+        if(!amount){
+              points++;
+          }else{
+            points+=amount;
+          }
         $("#scorepoints").text(points);
     }
 

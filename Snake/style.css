@@ -22,16 +22,13 @@
 }
 
 .food {
-    background-color: #FF5500;
-    outline: 1px solid black;
-    border-radius: 10%;
-    box-shadow: inset 0 0 10px #000000;
+    background:url(./images/rsz_fruits.png) 0 0;
 }
 
 .foodtaken {
-    background-color: #00FF00;
-    border-radius: 50%;
-    box-shadow: inset 1px 1px 10px #FF5500;
+    background-color: #D0FF25;
+    border-radius: 40%;
+    box-shadow: inset 1px 1px 15px #DD5500;
 }
 
 h3,

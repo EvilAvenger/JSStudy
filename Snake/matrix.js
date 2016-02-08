@@ -3,52 +3,57 @@ function Matrix(matrixSize) {
     this.matrixSize = matrixSize;
     this.matrix = createMatrix();
 
-    var toggleClass = function toggleClass(location, className) {
-        var cell = getDomCellByLocation(location);
-        cell.classList.toggle(className);
+    var toggleClass = function toggleClass(cell, className) {
+        $(cell).toggleClass(className);
     }
 
-    var addClass = function addClass(location, className) {
-        var cell = getDomCellByLocation(location);
-        if (!cell.classList.contains(className)) {
-            cell.classList.add(className);
+    var addClass = function addClass(cell, className) {
+        if (!cell.hasClass(className)) {
+            $(cell).addClass(className);
         }
     }
 
-    var removeClass = function removeClass(location, className) {
-        var cell = getDomCellByLocation(location);
-        if (cell.classList.contains(className)) {
-            cell.classList.remove(className);
+    var removeClass = function removeClass(cell, className) {
+        if (cell.hasClass(className)) {
+            $(cell).removeClass(className);
         }
     }
 
     this.addTail = function addTail(positions) {
         if (positions) {
-            addClass(this.translateToMatrixCoordinates(positions.x, positions.y), GAME_CLASSES.TAKENCELL);
-            removeClass(this.translateToMatrixCoordinates(positions.x, positions.y), GAME_CLASSES.TAKENFOOD);
+            var cell = this.getElementIndex(positions[0].x, positions[0].y);
+            addClass(cell, GAME_CLASSES.TAKENCELL);
+            removeClass(cell, GAME_CLASSES.TAKENFOOD);
         }
     }
 
     this.redrawSnake = function redrawSnake(positions) {
         if (positions) {
-            var first = positions[0];
-            toggleClass(this.translateToMatrixCoordinates(first.x, first.y), GAME_CLASSES.TAKENCELL);
+            var first = this.getElementIndex(positions[0].x, positions[0].y);
+            toggleClass(first, GAME_CLASSES.TAKENCELL);
+
             if (positions.length > 1) {
                 var last = positions[positions.length - 1];
-                toggleClass(this.translateToMatrixCoordinates(last.x, last.y), GAME_CLASSES.TAKENCELL);
-                removeClass(this.translateToMatrixCoordinates(last.x, last.y), GAME_CLASSES.TAKENFOOD);
+                last = this.getElementIndex(last.x, last.y);
+                toggleClass(last, GAME_CLASSES.TAKENCELL);
+                removeClass(last, GAME_CLASSES.TAKENFOOD);
             }
         }
     }
 
     this.redrawFood = function redrawFood(positions) {
         for (var i = 0; i < positions.length; i++) {
-            if (positions[i] && positions[i].isEaten) {
-                removeClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.TAKENCELL);
-                removeClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.FOOD);
-                addClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.TAKENFOOD);
+            var elements = this.getElementIndex(positions[i].x, positions[i].y);
+            if (positions[i].isEaten) {
+                removeClass(elements, GAME_CLASSES.TAKENCELL);
+                removeClass(elements, GAME_CLASSES.FOOD);
+                addClass(elements, GAME_CLASSES.TAKENFOOD);
             } else {
-                addClass(this.translateToMatrixCoordinates(positions[i].x, positions[i].y), GAME_CLASSES.FOOD);
+                addClass(elements, GAME_CLASSES.FOOD);
+                if (positions[i].hasOwnProperty("foodType")) {
+                    var pos = positions[i].foodType.x + "px " + positions[i].foodType.y + "px";
+                    $(elements).css("background-position", pos);
+                }
             }
         }
     }
@@ -62,19 +67,19 @@ function Matrix(matrixSize) {
         }
     }
 
-    this.translateToMatrixCoordinates = function translateToMatrixCoordinates(col, row) {
-        return coordinate = matrixSize * (row + 1) - matrixSize + col + 1;
+    this.getElementIndex = function getElementIndex(col, row) {
+        coordinate = matrixSize * (row + 1) - matrixSize + col;
+        return $("#matrix").children().eq(coordinate).first();
     };
 
     this.addCellToMatrix = function addCellToMatrix(position, className) {
-        var location = this.translateToMatrixCoordinates(position.x, position.y);
-        var cell = getDomCellByLocation(location);
+        var cell = this.getElementIndex(position.x, position.y);
         cell.classList.add(className);
         console.log("Just added cell classList: " + cell.classList);
         return location;
     }
 
-    this.clearBody = function clearBody(){
+    this.clearBody = function clearBody() {
         document.body.matrix.innerHTML = "";
     }
 
@@ -87,20 +92,5 @@ function Matrix(matrixSize) {
             matrix.appendChild(cell);
         }
         return matrix;
-    };
-
-    var getDomCellByLocation = function getDomCellByLocation(location) {
-        var matrix = document.getElementById('matrix'); 
-        return matrix.childNodes[location - 1];
-    }
-
-    var translateFromMatrixCoordinates = function translateFromCoordinates(position) {
-        var row = Math.floor(position / matrixSize) - 1;
-        var col = position - row * matrixSize - 1;
-        return {
-            x: row,
-            y: col
-        };
-        console.log("translateFromCoordinates: X: " + raw + " Y: " + col + "position: " + position);
     };
 };
