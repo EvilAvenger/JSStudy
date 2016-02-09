@@ -14,9 +14,7 @@ function Matrix(matrixSize) {
     }
 
     var removeClass = function removeClass(cell, className) {
-        if (cell.hasClass(className)) {
-            $(cell).removeClass(className);
-        }
+        $(cell).removeClass(className);
     }
 
     this.addTail = function addTail(positions) {
@@ -47,7 +45,7 @@ function Matrix(matrixSize) {
             if(positions[i].isExpired){
                removeClass(elements, GAME_CLASSES.FOOD); 
             }
-            else if (positions[i].isEaten) {
+            if (positions[i].isEaten) {
                 removeClass(elements, GAME_CLASSES.TAKENCELL);
                 removeClass(elements, GAME_CLASSES.FOOD);
                 addClass(elements, GAME_CLASSES.TAKENFOOD);

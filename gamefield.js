@@ -5,7 +5,7 @@ function GameField(settings) {
     this.snake = null;
 
     var MIN_POINTS_FOR_FOOD = 1;
-    var TIMER_INITIAL_VAL = 1500;
+    var TIMER_INITIAL_VAL = 1000;
     var self = this;
     var pressedKey;
     var moveInterval;
@@ -103,7 +103,7 @@ function GameField(settings) {
         cell.foodType = chooseFoodFromArray();
         foodPositions.unshift(cell);
         deleteExpiredFood(cell);
-        console.log("New food location: X:" + cell.x + " Y: " + cell.y);
+        console.log("New food location: X:" + cell.x + " Y: " + cell.y + " Food Type: "+ cell.foodType.points);
         return cell;
     };
 
@@ -113,7 +113,8 @@ function GameField(settings) {
                 stats.scoreDown();
                 foodPositions[0].isExpired = true;
                 matrix.redrawFood(foodPositions);
-                foodPositions.pop();
+                var food = foodPositions.pop();
+                console.log("Delete expired: X: " + food.x + " Y: " + food.y + " Food Type: "+ food.foodType.points);
                 createNewFoodRandomly();
             }, cell.foodType.timer);
         }

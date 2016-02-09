@@ -17,7 +17,7 @@ function Snake(settings, matrix) {
             } else {
                 snakePositions.push(block);
             }
-            console.log("Block added to snake. X:" + block.x + " Y:" + block.y);
+           // console.log("Block added to snake. X:" + block.x + " Y:" + block.y);
         }
         return block;
     };

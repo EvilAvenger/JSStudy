@@ -14,7 +14,7 @@ var GAME_MODE = {
     DEATHBOUNDS: 2
 };
 
-window.onload = function() {
+$(document).ready(function() {
     initHelperFunctions();
     var startPosition = {
         x: 0,
@@ -24,7 +24,7 @@ window.onload = function() {
     settings.initialize();
     var game = new GameField(settings);
     game.initialize();
-};
+});
 
 function initHelperFunctions() {
     Object.prototype.compareObjectCoordinates = function compareObjectCoordinates(that) {
