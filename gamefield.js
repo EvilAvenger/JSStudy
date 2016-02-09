@@ -42,10 +42,10 @@ function GameField(settings) {
     }];
 
     var KEY_CODE = {
-        ARROW_UP: 38,
-        ARROW_DOWN: 40,
         ARROW_LEFT: 37,
-        ARROW_RIGHT: 39
+        ARROW_UP: 38,
+        ARROW_RIGHT: 39,
+        ARROW_DOWN: 40
     };
 
     this.initialize = function initialize() {
@@ -103,7 +103,7 @@ function GameField(settings) {
         cell.foodType = chooseFoodFromArray();
         foodPositions.unshift(cell);
         deleteExpiredFood(cell);
-        console.log("New food location: X:" + cell.x + " Y: " + cell.y + " Food Type: "+ cell.foodType.points);
+        console.log("New food location: X:" + cell.x + " Y: " + cell.y + " Food Type: " + cell.foodType.points);
         return cell;
     };
 
@@ -114,7 +114,7 @@ function GameField(settings) {
                 foodPositions[0].isExpired = true;
                 matrix.redrawFood(foodPositions);
                 var food = foodPositions.pop();
-                console.log("Delete expired: X: " + food.x + " Y: " + food.y + " Food Type: "+ food.foodType.points);
+                console.log("Delete expired: X: " + food.x + " Y: " + food.y + " Food Type: " + food.foodType.points);
                 createNewFoodRandomly();
             }, cell.foodType.timer);
         }
@@ -148,7 +148,7 @@ function GameField(settings) {
     var reassignTimer = function() {
         clearInterval(moveInterval);
         onKeyDown(pressedKey);
-        moveInterval = setInterval(reassignTimer, 
+        moveInterval = setInterval(reassignTimer,
             TIMER_INITIAL_VAL * (100 - (Math.round(stats.getLength() / 10) * 10)) / 100);
         stats.setSpeed();
     };

@@ -44,11 +44,13 @@ function Matrix(matrixSize) {
             var elements = this.getElementIndex(positions[i].x, positions[i].y);
             if(positions[i].isExpired){
                removeClass(elements, GAME_CLASSES.FOOD); 
+               delete positions[i].isExpired;
             }
-            if (positions[i].isEaten) {
+            else if (positions[i].isEaten) {
                 removeClass(elements, GAME_CLASSES.TAKENCELL);
                 removeClass(elements, GAME_CLASSES.FOOD);
                 addClass(elements, GAME_CLASSES.TAKENFOOD);
+                delete positions[i].isExpired;
             } else {
                 addClass(elements, GAME_CLASSES.FOOD);
                 if (positions[i].hasOwnProperty("foodType")) {
