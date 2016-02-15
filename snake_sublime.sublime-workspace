@@ -1,0 +1,1022 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"clear",
+				"clearInterval"
+			],
+			[
+				"clea",
+				"clearInterval"
+			],
+			[
+				"creat",
+				"createFoodObject"
+			],
+			[
+				"food",
+				"foodPositions"
+			],
+			[
+				"has",
+				"hasClass	.hasClass()"
+			],
+			[
+				"cell",
+				"cellPosition"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"posi",
+				"positions"
+			],
+			[
+				"des",
+				"dest_dir"
+			],
+			[
+				"ye",
+				"years"
+			],
+			[
+				"matr",
+				"matrix"
+			],
+			[
+				"pop",
+				"pop()	Array"
+			],
+			[
+				"sna",
+				"snakePositions"
+			],
+			[
+				"pos",
+				"positions"
+			],
+			[
+				"GAME",
+				"GAME_CLASSES"
+			],
+			[
+				"red",
+				"redrawFood	(matrix.js)"
+			],
+			[
+				"new",
+				"newTail"
+			],
+			[
+				"getS",
+				"getSnakesHeadBlock"
+			],
+			[
+				"getSna",
+				"getSnakesTailBlock"
+			],
+			[
+				"snak",
+				"snakePositions"
+			],
+			[
+				"GAM",
+				"GAME_CLASSES"
+			],
+			[
+				"ce",
+				"cellPosition"
+			],
+			[
+				"sett",
+				"settings"
+			],
+			[
+				"sn",
+				"snakePositions"
+			],
+			[
+				"foo",
+				"foodPosition"
+			],
+			[
+				"count",
+				"count_fibonacci"
+			],
+			[
+				"ke",
+				"keypress	.keypress()"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"po",
+				"positions"
+			],
+			[
+				"getCe",
+				"getDomCellByLocation"
+			],
+			[
+				"up",
+				"updateCells"
+			],
+			[
+				"ARROW",
+				"ARROW_LEFT"
+			],
+			[
+				"ARR",
+				"ARROW_UP"
+			],
+			[
+				"create",
+				"createArray"
+			],
+			[
+				"delet",
+				"deleteCells"
+			],
+			[
+				"con",
+				"contains	.contains()"
+			],
+			[
+				"class",
+				"className	Element"
+			],
+			[
+				"mat",
+				"matrixSize"
+			],
+			[
+				"words",
+				"wordsDict"
+			],
+			[
+				"str",
+				"strip"
+			],
+			[
+				"mim",
+				"mimic_dict"
+			],
+			[
+				"word",
+				"wordDic"
+			],
+			[
+				"read",
+				"readlines	(5_file.py)"
+			],
+			[
+				"app",
+				"append"
+			],
+			[
+				"lo",
+				"lower	function"
+			],
+			[
+				"s",
+				"split	function"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"styl",
+				"style	<style>"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"ar",
+				"articles.html"
+			],
+			[
+				"a",
+				"articles.html"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"border-",
+				"border-radius"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"flex",
+				"flexrow"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"va",
+				"value	Attr"
+			],
+			[
+				"he",
+				"height	Attr"
+			],
+			[
+				"cont",
+				"content"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"style",
+				"stylesheet"
+			],
+			[
+				"OTE",
+				"OTEMAILBODIES"
+			],
+			[
+				"OT",
+				"OTEMAILPROPERTIES"
+			],
+			[
+				"const",
+				"constructor"
+			],
+			[
+				"hide",
+				"hideChart"
+			],
+			[
+				"cel",
+				"cellData"
+			],
+			[
+				"get",
+				"getHours〔function〕"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"max-",
+				"max-height"
+			],
+			[
+				"re",
+				"relative"
+			],
+			[
+				"bord",
+				"border-style"
+			],
+			[
+				"paddi",
+				"padding"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"IRe",
+				"IEnumerable"
+			],
+			[
+				"E",
+				"elementsArray"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"ri",
+				"right"
+			],
+			[
+				"hei",
+				"height"
+			],
+			[
+				"dis",
+				"display"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"bo",
+				"both"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 334.0,
+		"last_filter": "Remove",
+		"selected_items":
+		[
+			[
+				"Remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"push",
+				"Git: Push Current Branch"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"gitSt",
+				"Git: Status"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"add",
+				"Git: Add All"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"Git co",
+				"Git: Commit"
+			],
+			[
+				"Format",
+				"Format: Javascript"
+			],
+			[
+				"Packages",
+				"Package Control: List Packages"
+			],
+			[
+				"JS Format",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"disabl",
+				"Package Control: Disable Package"
+			],
+			[
+				"Disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"Disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"Dis",
+				"Snippet: display:inline"
+			],
+			[
+				"Disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"DIsable",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Auto",
+				"Autoprefix CSS"
+			],
+			[
+				"Au",
+				"Autoprefix CSS"
+			],
+			[
+				"Modi",
+				"Modific: Toggle highlight changes"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git commig",
+				"Set Syntax: Git Commit Message"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git",
+				"Git: Init"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Intall",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Remove Package"
+			],
+			[
+				"Aut",
+				"Autoprefix CSS"
+			],
+			[
+				"",
+				"Autoprefix CSS"
+			],
+			[
+				"Instal",
+				"Package Control: Install Package"
+			],
+			[
+				"A",
+				"Autoprefix CSS"
+			],
+			[
+				"auto",
+				"Autoprefix CSS"
+			],
+			[
+				"remove Pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"INstall",
+				"Package Control: Install Package"
+			],
+			[
+				"htmlpr",
+				"HTMLPrettify: Set `node` Path"
+			],
+			[
+				"htmk",
+				"HTMLPrettify: Set Keyboard Shortcuts"
+			],
+			[
+				"Linter",
+				"SublimeLinter: Enable Linter"
+			],
+			[
+				"Enable ",
+				"Package Control: Enable Package"
+			],
+			[
+				"Enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"Browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"Pacga",
+				"Package Control: Discover Packages"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 365.0,
+		"history":
+		[
+			"git clone git@github.com:nathanmarz/storm-starter.git",
+			"git clone",
+			"git",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git"
+	],
+	"file_history":
+	[
+		"/C/Program Files (x86)/TransVault Software/TransVault Server/TV_Engine.exe.Config",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/gamestatistcs.js",
+		"/C/ProgramData/TransVault Software/Migrator/Logs/Engine.log",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/snake_sublime.sublime-project",
+		"/C/Program Files (x86)/TransVault Software/TransVault Server/LICENSE-LOG4NET.txt",
+		"/C/Program Files (x86)/TransVault Software/TransVault Server/Ms-RL.txt",
+		"/C/Program Files (x86)/TransVault Software/TransVault Server/NOTICES.txt",
+		"/C/Program Files (x86)/TransVault Software/TransVault Server/GPLv2.txt",
+		"/D/Migrator/Migrator Related/PST/Different MSG classes.pst.txt",
+		"/D/Dropbox/Programs/Sublime Text Build 3047 x64/Data/Packages/User/Preferences.sublime-settings",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/index.html",
+		"/D/Migrator/Trunk/TransVault/Output/Server/TV_Engine.exe.config",
+		"/D/Migrator/Trunk/TransVault/Output/ConfigurationServer/TV_ConfigService.exe.config",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/gamefield.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/snake.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/settings.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/script.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/matrix.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/gamestatistics.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/script.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/matrix.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/gamefield.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/game.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/snake.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/style.css",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/gamestatistcs.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/settings.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/images/1.html",
+		"/D/Dropbox/Programs/Sublime Text Build 3047 x64/Data/Packages/User/View In Browser.sublime-settings",
+		"/D/Dropbox/Programs/Sublime Text Build 3047 x64/Data/Packages/View In Browser/View In Browser.sublime-settings",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Git/Snake/gamestatistics.js",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/3_class.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/6_extra.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/4_example.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/5_multiple.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/1_modules/b.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/1_modules/a.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/1_modules/string.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/2_packages/string.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/2_packages/mod.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/1_modules/c.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_5/2_packages/main.py",
+		"/C/Users/v.bibikov/Downloads/euler2.py",
+		"/C/Users/v.bibikov/Downloads/New Text Document.txt",
+		"/C/Users/v.bibikov/Downloads/BibikovV_Lesson_4_feedback/babynames/babynames.py",
+		"/C/Users/v.bibikov/Downloads/BibikovV_Lesson_4_feedback/logpuzzle/logpuzzle.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_4/babynames/babynames_girls.html",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_4/babynames/babynames.py",
+		"/D/Migrator/Trunk/TransVault/Output/Server/TV_Engine.log",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_4/logpuzzle/logpuzzle.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_4/Vitaly_Bibikov/README.txt",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_4/lesson4/1_re.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_4/logpuzzle/apple-cat.ru_access.log",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_4/lesson4/3_urllib.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_4/lesson4/2_os.py",
+		"/D/lol/index.html",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_4/babynames/babynames_boys.html",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lesson_2/3_dict.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_2/wordcount.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Git/Lesson_2/mimic.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_1/list.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_1/string.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_1/slice.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_2/mimic.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_2/wordcount.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_3/euler1.py",
+		"/D/Dropbox/Study/Programming/Python/Geekbrains/Lessons/Git/Lesson_3/euler2.py",
+		"/C/Users/v.bibikov/Downloads/euler1.py",
+		"/C/Users/v.bibikov/Downloads/string.py",
+		"/C/Users/v.bibikov/Downloads/slice.py",
+		"/C/Users/v.bibikov/Downloads/list.py",
+		"/D/Migrator/Trunk/TransVault/Output/Server/Engine.log",
+		"/D/Dropbox/Study/Programming/HTML/Lessons/Grid/Grid.html",
+		"/C/Users/v.bibikov/Desktop/New Text Document.txt",
+		"/D/Dropbox/Programs/Sublime Text Build 3047 x64/Data/Packages/GitGutter/GitGutter.sublime-settings",
+		"/D/Dropbox/Study/Programming/Git/HTML/Lessons/Geekbrains/SideProjects/lesson_6/index2.html",
+		"/D/Dropbox/Study/Programming/Git/HTML/Lessons/Geekbrains/SideProjects/lesson_6/index.html",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Git/Lesson_3/euler1.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Git/Lesson_3/euler2.py",
+		"/C/Users/AlterEgo/Desktop/f2.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_3/1_input.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_3/2_lambda_map_filter_reduce_min_max_sum.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_3/3_any_all.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_3/4_generators.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_1/Vitaly_Bibikov/Lesson_1/slice.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_1/Vitaly_Bibikov/Lesson_1/string.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_1/Vitaly_Bibikov/Lesson_1/list.py",
+		"/C/Users/AlterEgo/Desktop/f.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Git/Lesson_2/wordcount.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Git/Lesson_2/mimic.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/Vitaly_Bibikov/Lesson_2/wordcount.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/Vitaly_Bibikov/Lesson_2/mimic.py",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/dz/style.css",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/dz/game.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/dz/script.js",
+		"/C/Users/v.bibikov/AppData/Local/Temp/7zOCBFB9473/game.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/09x/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/09x/script.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/09/script.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/09/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/08/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/08/скрипт.txt",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/08/script.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/05/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/06/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/07/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/04/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/03/page.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/02/index.html",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/02/script.js",
+		"/D/Dropbox/Study/Programming/Javascript/Geekbrains/Lesson_1/01/index.html",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/exercises/wordcount.py",
+		"/D/Migrator/Migrator Related/Oracle/1/New_Archive/New_Archive/46/98/25/0000AD0D/rd.TQ4PYU5H.SIA;1",
+		"/D/Migrator/Migrator Related/Oracle/1/New_Archive/New_Archive/46/98/25/0000AD0D/ATTRIB.ATR",
+		"/D/Migrator/Migrator Related/Oracle/1/New_Archive/New_Archive/46/98/25/0000AD0D/rd.PVNKLZQE.SIA;1",
+		"/D/Migrator/Migrator Related/Oracle/1/New_Archive/New_Archive/46/98/25/0000AD0D/rd.UU1FX712.SIA;1",
+		"/D/Migrator/Migrator Related/Oracle/1/New_Archive/New_Archive/46/97/35/000089E4/ATTRIB.ATR",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/text3.txt",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/5_file.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/4_set_frozenset.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/3_dict.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/2_tuple.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/1_decimal_fraction.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/exercises/mimic.py",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/text4.txt",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/text.txt",
+		"/D/Migrator/Trunk/TransVault/Connectors/Connector.Input.OpenText/Connector.Input.OpenText.csproj",
+		"/D/Dropbox/Study/Programming/Python/Lessons/Lesson_2/lesson2/lesson2.py"
+	],
+	"find":
+	{
+		"height": 75.0
+	},
+	"find_in_files":
+	{
+		"height": 92.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			" E",
+			"foodExp",
+			"foodExpo",
+			"Interval",
+			"interval",
+			"addCellToMatrix",
+			"scoreUp",
+			"translateToMatrixCoordinates",
+			"getDomCellByLocation",
+			"translateFromMatrixCoordinates",
+			"isEaten",
+			"matrix",
+			"ERROR ",
+			"locateFood",
+			"return",
+			"href",
+			"col",
+			"()\n",
+			"Archive",
+			"ERROR",
+			"ERROR ",
+			" ERROR ",
+			"1603",
+			"Ixos",
+			"-1",
+			"Disabled",
+			";",
+			"StyleCop",
+			"Ixos",
+			"mainarticle",
+			"products",
+			"row",
+			"span",
+			"content",
+			"flex",
+			"image",
+			"p",
+			"span",
+			"64",
+			"inherit",
+			"2677891",
+			"flex: 1",
+			"footer",
+			"56",
+			".",
+			"Warning",
+			"Hash",
+			".msbuild",
+			"BuildMi",
+			"Failed",
+			"FAILED",
+			"Failed ",
+			"FAILED ",
+			"Failed",
+			"FAILED",
+			"v100",
+			"HashApp.Test.HashCalculator.csproj",
+			"error",
+			"app.c",
+			"\\)$",
+			"))$",
+			"$",
+			")$",
+			")^",
+			")",
+			"H:",
+			" ",
+			"ERROR",
+			"vbibikov",
+			"LES_USER",
+			"DS_VOLID",
+			";",
+			"Framework",
+			"4.0",
+			"TVS",
+			"ERROR ",
+			"MAPI ",
+			"ERROR ",
+			"18",
+			"port",
+			"Task started",
+			"Start",
+			"ERR",
+			"formigration@tv-mtl.corp",
+			"System.NotSupportedException",
+			"ERROR",
+			"MSBuild",
+			"ERROR",
+			"Transvault",
+			"LibraryPath",
+			"VC_IncludePath",
+			"00000000000000004fc16ed511f9090844f1278201086444045622036282770397162461",
+			"ERROR",
+			" ",
+			"modules",
+			"\nsystem.webServer",
+			"system.webServer",
+			"handlers",
+			"overrideMode",
+			"handlers",
+			"network",
+			"PrimarySmtp",
+			"1603",
+			"script",
+			"SET_VALUE_TRANSVAULREADYTITLE2",
+			"TransV",
+			"аф",
+			"failed",
+			"Verveba",
+			"Database",
+			"Install",
+			"Gmap",
+			"header",
+			"Tv_ENGINE.exe.config",
+			"CreateCon",
+			"1603",
+			"error",
+			"1708",
+			"CreateConfigDb",
+			"CreateDatabase",
+			"TV_ENGINE.exe.config",
+			"TV_ENGINE.config",
+			".config",
+			"config",
+			"rollback",
+			"rollbacjh",
+			"header",
+			"555555"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 373.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 144.0
+	},
+	"pinned_build_system": "",
+	"project": "snake_sublime.sublime-project",
+	"replace":
+	{
+		"height": 68.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Index.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 168.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
